@@ -1,0 +1,31 @@
+
+<% if @status == "Signup Successful" || @status == "No Go. Try again" %>
+	<!-- LOGIN FORM -->
+
+	<h1> Login </h1>
+	<h3> <%= @status %>
+	<form method="POST" action="/login">
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<input type="submit">
+	</form>
+
+<% elsif @status == nil %>
+
+	<!-- SIGN UP FORM -->
+	<h1> Sign UP </h1>
+	<h3> <%= @error %> </h3> 
+	<form method="POST" action="/signup">
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<input type="submit">
+	</form>
+
+<% elsif @status == "You're in!" %>
+
+	<!-- LOGGED IN STATUS -->
+	<h1> <%= @status %> </h1>
+	<h2> Hello <%= @user.username %> </h2>
+
+	<p><a href="/logout"> Logout </a></p>
+<% end %>
